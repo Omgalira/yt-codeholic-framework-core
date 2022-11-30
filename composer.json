@@ -1,0 +1,15 @@
+{
+    "name": "omgalira/yt-codeholic-framework-core",
+    "autoload": {
+        "psr-4": {
+            "Omgalira\\YtCodeholicFrameworkCore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Omgalira",
+            "email": "omgalira@gmail.com"
+        }
+    ],
+    "require": {}
+}
