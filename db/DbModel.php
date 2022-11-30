@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Core\Db;
+namespace Omgalira\TheCodeholicPhpMvc\Db;
 
-use App\Core\Application;
-use App\Core\Model;
+use Omgalira\TheCodeholicPhpMvc\Application;
+use Omgalira\TheCodeholicPhpMvc\Model;
 
 abstract class DbModel extends Model
 {

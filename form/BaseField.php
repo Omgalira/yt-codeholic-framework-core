@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Form;
+namespace Omgalira\TheCodeholicPhpMvc\Form;
 
-use App\Core\Model;
+use Omgalira\TheCodeholicPhpMvc\Model;
 
 abstract class BaseField
 {

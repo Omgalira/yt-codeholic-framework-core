@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace Omgalira\TheCodeholicPhpMvc;
 
-use App\Core\Exception\NotFoundException;
+use Omgalira\TheCodeholicPhpMvc\Exception\NotFoundException;
 
 class Router
 {

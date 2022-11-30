@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Exception;
+namespace Omgalira\TheCodeholicPhpMvc\Exception;
 
 class ForbiddenException extends \Exception
 {

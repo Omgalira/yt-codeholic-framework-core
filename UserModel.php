@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace Omgalira\TheCodeholicPhpMvc;
 
-use App\Core\Db\DbModel;
+use Omgalira\TheCodeholicPhpMvc\Db\DbModel;
 
 abstract class UserModel extends DbModel
 {

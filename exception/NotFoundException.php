@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Exception;
+namespace Omgalira\TheCodeholicPhpMvc\Exception;
 
 class NotFoundException extends \Exception
 {

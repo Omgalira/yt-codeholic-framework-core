@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Core\Middlewares;
+namespace Omgalira\TheCodeholicPhpMvc\Middlewares;
 
-use App\Core\Application;
-use App\Core\Exception\ForbiddenException;
+use Omgalira\TheCodeholicPhpMvc\Application;
+use Omgalira\TheCodeholicPhpMvc\Exception\ForbiddenException;
 
 class AuthMiddleware extends BaseMiddleware
 {

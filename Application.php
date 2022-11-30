@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace Omgalira\TheCodeholicPhpMvc;
 
-use App\Core\Db\Database;
+use Omgalira\TheCodeholicPhpMvc\Db\Database;
 
 class Application
 {

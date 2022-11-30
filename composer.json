@@ -11,5 +11,10 @@
             "email": "omgalira@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Omgalira\\TheCodeholicPhpMvc\\": "./"
+        }
+    }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace Omgalira\TheCodeholicPhpMvc;
 
-use App\Core\Middlewares\BaseMiddleware;
+use Omgalira\TheCodeholicPhpMvc\Middlewares\BaseMiddleware;
 
 class Controller
 {

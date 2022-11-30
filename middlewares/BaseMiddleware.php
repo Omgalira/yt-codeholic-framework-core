@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Middlewares;
+namespace Omgalira\TheCodeholicPhpMvc\Middlewares;
 
 abstract class BaseMiddleware
 {
