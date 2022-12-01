@@ -26,6 +26,35 @@ class Router
         $this->routes['post'][$path] = $callback;
     }
 
+    public function getCallback()
+    {
+        $method = $this->request->method();
+        $path = $this->request->getPath();
+
+        $url = trim($path, '/');
+
+        $routes = $this->routes[$method] ?? [];
+
+        $routeParams = false;
+
+        foreach ($routes as $route => $callback) {
+            $route = trim($route, '/');
+            $routeNames = [];
+
+            if (!$route) {
+                continue;
+            }
+
+            if (preg_match_all('/\{(\w+)(:[^}]+)?}/', $route, $matches)) {
+                $routeNames = $matches[1];
+            }
+
+            echo '<pre>';
+            var_dump($routeNames);
+            echo '</pre>';
+        }
+    }
+
     public function resolve()
     {
         $path = $this->request->getPath();
@@ -33,6 +62,8 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) {
+            $callback = $this->getCallback();
+
             throw new NotFoundException();
         }
 
