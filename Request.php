@@ -4,6 +4,8 @@ namespace Omgalira\TheCodeholicPhpMvc;
 
 class Request
 {
+    private array $routeParams = [];
+
     public function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
@@ -48,5 +50,16 @@ class Request
         }
 
         return $body;
+    }
+
+    public function setRouteParams($params)
+    {
+        $this->routeParams = $params;
+        return $this;
+    }
+
+    public function getRouteParams(): array
+    {
+        return $this->routeParams;
     }
 }

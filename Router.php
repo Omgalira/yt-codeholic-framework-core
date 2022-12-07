@@ -31,13 +31,17 @@ class Router
         $method = $this->request->method();
         $path = $this->request->getPath();
 
+        // Trim slashes
         $url = trim($path, '/');
 
+        // Get all routes for current request method
         $routes = $this->routes[$method] ?? [];
 
         $routeParams = false;
 
+        // Start iterating registered routes
         foreach ($routes as $route => $callback) {
+            // Trim slashes
             $route = trim($route, '/');
             $routeNames = [];
 
@@ -45,14 +49,31 @@ class Router
                 continue;
             }
 
+            // Find all route names from route and save in $routeNames
+            // /login/{id}                     -> /login/(\w+)            -> login/1
+            // /profile/{id:\d+}/{username}    -> /profile/(\d+)/(\w+)    -> profile/1/zura
             if (preg_match_all('/\{(\w+)(:[^}]+)?}/', $route, $matches)) {
                 $routeNames = $matches[1];
             }
 
-            echo '<pre>';
-            var_dump($routeNames);
-            echo '</pre>';
+            // Convert route name into regex pattern
+            $routeRegex = "@^" . preg_replace_callback('/\{\w+(:([^}]+))?}/', fn($m) => isset($m[2]) ? "({$m[2]})" : '(\w+)', $route) . "$@";
+
+            // Test and match current route against $routeRegex
+            if (preg_match_all($routeRegex, $url, $valueMatches)) {
+                $values = [];
+                for ($i = 1; $i < count($valueMatches); $i++) {
+                    $values[] = $valueMatches[$i][0];
+                }
+                $routeParams = array_combine($routeNames, $values);
+
+                $this->request->setRouteParams($routeParams);
+
+                return $callback;
+            }
         }
+
+        return false;
     }
 
     public function resolve()
@@ -64,7 +85,9 @@ class Router
         if ($callback === false) {
             $callback = $this->getCallback();
 
-            throw new NotFoundException();
+            if ($callback === false) {
+                throw new NotFoundException();
+            }
         }
 
         if (is_string($callback)) {
