@@ -13,6 +13,7 @@ class Application
 
     public static string $ROOT_DIR;
     public static string $PUBLIC_DIR;
+    public static string $BASE_URL;
     public static Application $app;
 
     public string $layout = 'main';
@@ -34,6 +35,8 @@ class Application
         self::$app = $this;
 
         $this->request = new Request();
+        self::$BASE_URL = $this->request->getBaseUrl();
+        
         $this->response = new Response();
         $this->session = new Session();
         $this->router = new Router($this->request, $this->response);

@@ -6,6 +6,37 @@ class Request
 {
     private array $routeParams = [];
 
+    public function getBaseUrl(): string
+    {
+        $serverProtocol = $_SERVER['REQUEST_SCHEME'] ?? 'http';
+        $serverName = $_SERVER['SERVER_NAME'];
+        $serverPort = $_SERVER['SERVER_PORT'];
+        $requestUri = $_SERVER['REQUEST_URI'];
+        $scriptName = $_SERVER['SCRIPT_NAME'];
+
+        $url = '';
+        $url .= $serverProtocol.'://';
+        $url .= $serverName;
+
+        if ( ($serverProtocol === 'http' && $serverPort !== '80') || ($serverProtocol === 'https' && $serverPort !== '443')) {
+            $url .= ':'.$serverPort;
+        }
+
+        $baseUri = str_replace('/index.php', '', $scriptName);
+
+        $url .= $baseUri;
+
+        // Buscar si se mandaron parámetros QueryString
+        $pos = strpos($requestUri, '?');
+        if ($pos) {
+            $requestUri = substr($requestUri, 0, $pos);
+        }
+
+        $route = str_replace($baseUri, '', $requestUri);
+
+        return $url;
+    }
+
     public function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
