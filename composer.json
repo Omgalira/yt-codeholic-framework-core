@@ -1,10 +1,5 @@
 {
     "name": "omgalira/yt-codeholic-framework-core",
-    "autoload": {
-        "psr-4": {
-            "Omgalira\\YtCodeholicFrameworkCore\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Omgalira",
@@ -13,6 +8,9 @@
     ],
     "require": {},
     "autoload": {
+        "files": [
+            "./support/helpers.php"
+        ],
         "psr-4": {
             "Omgalira\\TheCodeholicPhpMvc\\": "./"
         }
